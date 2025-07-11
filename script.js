@@ -1,12 +1,19 @@
-document.querySelectorAll('.box').forEach(box => {
-  box.addEventListener('click', function (e) {
-    // Prevent toggling when clicking on form controls
-    if (e.target.tagName === 'SELECT' || e.target.tagName === 'OPTION') return;
+function selectOption(option) {
+  document.getElementById(`unit${option}`).checked = true;
 
-    // Collapse all boxes
-    document.querySelectorAll('.box').forEach(b => b.classList.remove('expanded'));
+  let totalPrice = 0;
 
-    // Expand the clicked one
-    this.classList.add('expanded');
-  });
-});
+  switch (option) {
+    case 1:
+      totalPrice = 10.00;
+      break;
+    case 2:
+      totalPrice = 18.00;
+      break;
+    case 3:
+      totalPrice = 24.00;
+      break;
+  }
+
+  document.getElementById("totalPrice").textContent = `$${totalPrice.toFixed(2)} USD`;
+}
